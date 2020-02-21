@@ -5,7 +5,8 @@ import {Router} from '@angular/router';
 import {SelectOption} from '../../../shared/models/SelectOption';
 import {Roles} from '../../../shared/models/Roles';
 import {AppMethods} from '../../../shared/AppMethods';
-import {Location} from "@angular/common";
+import {Location} from '@angular/common';
+import {User} from "../../../shared/models/User";
 
 @Component({
   selector: 'app-register',
@@ -44,9 +45,17 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
+  get user() {
+    return this.registerForm.value;
+  }
+
   onSubmit() {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).pipe().subscribe();
+      const user = new User(this.user.username, this.user.password, this.user.email, this.user.role);
+      this.authService.register(this.registerForm.value).pipe().subscribe(() => {
+        // TODO alert
+        this.router.navigate(['/login']);
+      });
     }
   }
 
