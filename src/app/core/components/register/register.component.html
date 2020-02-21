@@ -1,0 +1,51 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username" class="col-lg-2">Username:</label>
+    <input type="text" formControlName="username" id="username" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">Username is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="col-lg-2">E-mail:</label>
+    <input type="email" formControlName="email" id="email" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="email@email.com">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">E-mail is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-lg-2">Password:</label>
+    <input type="password" formControlName="password" id="password" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Password is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmpassword" class="col-lg-2">Confirm Password:</label>
+    <input type="password" formControlName="confirmpassword" id="confirmpassword" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }">
+    <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+      <div *ngIf="f.confirmpassword.errors.required">Password needs to be confirmed</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="role" class="col-lg-2">Role</label>
+    <ng-select type="radio" id="role" formControlName="role" class="col-lg-3"
+               [options]="roles"
+               [noFilter]="'Infinity'"
+               [allowClear]="true"
+               (selected)="refreshRoleValue($event)"
+               (deselected)="onRoleClear()"></ng-select>
+  </div>
+
+  <div class="form-group">
+    <button (click)="goBack()" class="btn mt-3 mr-3">
+      Back
+    </button>
+    <button [disabled]="!registerForm.valid" class="btn mt-3">Register</button>
+  </div>
+</form>
