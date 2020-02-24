@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../login/auth.service';
+import {AuthService} from '../../../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {SelectOption} from '../../../shared/models/SelectOption';
 import {Roles} from '../../../shared/models/Roles';
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       const user = new User(this.user.username, this.user.password, this.user.email, this.user.role);
-      this.authService.register(this.registerForm.value).pipe().subscribe(() => {
+      this.authService.register(user).pipe().subscribe(() => {
         // TODO alert
         this.router.navigate(['/login']);
       });

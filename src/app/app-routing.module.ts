@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from './core/components/register/register.component';
 import {LoginComponent} from './core/components/login/login.component';
+import {AuthGuard} from './shared/services/auth-guard.service';
+import {JobsComponent} from './merchant/components/jobs/jobs.component';
 
 const appRoutes: Routes = [
   {
@@ -12,6 +14,11 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: '',
+    component: JobsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -23,4 +30,5 @@ const appRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

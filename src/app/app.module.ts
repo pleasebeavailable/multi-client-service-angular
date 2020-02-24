@@ -9,9 +9,11 @@ import {WebLayoutComponent} from './core/components/web-layout/web-layout.compon
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './core/components/register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {SelectModule} from "ng-select";
-import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from '@angular/forms';
+import {SelectModule} from 'ng-select';
+import {HttpClientModule} from '@angular/common/http';
+import {TokenStorage} from './shared/services/token.storage';
+import { JobsComponent } from './merchant/components/jobs/jobs.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {HttpClientModule} from "@angular/common/http";
     ComponentsComponent,
     NavbarComponent,
     WebLayoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    JobsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import {HttpClientModule} from "@angular/common/http";
     SelectModule,
 
   ],
-  providers: [],
+  providers: [TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {
