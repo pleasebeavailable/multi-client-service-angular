@@ -14,8 +14,8 @@ export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
-  register(user: User): Observable<any> {
-    return this.httpClient.post(AppConstants.BACKEND_URL + 'api/signup', user, AppConstants.apiHttpOptions);
+  register(user: User): Observable<User> {
+    return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/signup', user, AppConstants.apiHttpOptions);
   }
 
   login(loginData: LoginData): Observable<User> {
