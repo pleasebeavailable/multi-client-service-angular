@@ -6,7 +6,7 @@ import {SelectOption} from '../../../shared/models/SelectOption';
 import {Roles} from '../../../shared/models/Roles';
 import {AppMethods} from '../../../shared/AppMethods';
 import {Location} from '@angular/common';
-import {User} from "../../../shared/models/User";
+import {User} from '../../../shared/models/User';
 
 @Component({
   selector: 'app-register',

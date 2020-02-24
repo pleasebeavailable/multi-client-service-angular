@@ -25,4 +25,8 @@ export class JobService {
   getMerchantJobs(): Observable<Job[]> {
     return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allMerchantJobs/' + this.user.id, this.httpOptions);
   }
+
+  createJob(job: Job): Observable<{}> {
+    return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', this.httpOptions);
+  }
 }
