@@ -17,8 +17,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    component: JobsComponent,
-    canActivate: [AuthGuard]
+    component: JobsComponent
   }
 ];
 

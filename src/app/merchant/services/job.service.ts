@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Job} from '../../shared/models/Job';
 import {AppConstants} from '../../shared/AppConstants';
@@ -11,16 +11,18 @@ import {User} from '../../shared/models/User';
 })
 export class JobService {
   user: User;
+  httpOptions = AppConstants.apiHttpOptions;
 
   constructor(private httpClient: HttpClient, private tokenStorage: TokenStorage) {
-    console.log(tokenStorage.getUser())
+    this.httpOptions.headers = AppConstants.apiHttpOptions.headers.append('Authorization', this.tokenStorage.getToken());
     this.user = tokenStorage.getUser();
   }
 
+  getAllJobs(): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions);
+  }
+
   getMerchantJobs(): Observable<Job[]> {
-    const httpOptions = AppConstants.apiHttpOptions;
-    httpOptions.headers = AppConstants.apiHttpOptions.headers.append('Authorization', this.tokenStorage.getToken());
-    console.log(httpOptions)
-    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allMerchantJobs/' + this.user.id, httpOptions);
+    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allMerchantJobs/' + this.user.id, this.httpOptions);
   }
 }

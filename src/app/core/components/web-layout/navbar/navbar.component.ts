@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {TokenStorage} from "../../../../shared/services/token.storage";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {TokenStorage} from '../../../../shared/services/token.storage';
+import {Router} from '@angular/router';
+import {User} from '../../../../shared/models/User';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,17 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private tokenStorage: TokenStorage, private router: Router) { }
+  user: User;
+
+  constructor(private tokenStorage: TokenStorage, private router: Router) {
+  }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getUser()) {
+      this.user = this.tokenStorage.getUser();
+    } else {
+      this.user = null;
+    }
   }
 
   signOut() {

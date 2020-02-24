@@ -10,4 +10,5 @@ export class AppConstants {
       'Access-Control-Allow-Origin': '*'
     })
   };
+
 }

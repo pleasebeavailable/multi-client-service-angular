@@ -1,27 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Serviceller</a>
+  <a class="navbar-brand" routerLink="">Serviceller</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      <ng-template #anonymous>
+      <ng-template #anonymousUser>
         <li class="nav-item">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
       </ng-template>
-      <li ngbDropdown class="nav-item dropdown">
+      <li *ngIf="user; else anonymousUser" ngbDropdown class="nav-item dropdown">
         <a ngbDropdownToggle class="nav-link" role="button" aria-haspopup="true"
-           aria-expanded="false">Dropdown link</a>
+           aria-expanded="false">Hello {{user.username}}</a>
         <div ngbDropdownMenu class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <ng-template #customer>
+            <a class="dropdown-item" href="#">Customer 1</a>
+            <a class="dropdown-item" href="#">Customer 2</a>
+          </ng-template>
+          <ng-container *ngIf="this.user.roles[0] == 'ROLE_MERCHANT'; else customer">
+            <a class="dropdown-item" routerLink="">Merchant 1</a>
+            <a class="dropdown-item" href="#">Merchant 2</a>
+          </ng-container>
           <a class="dropdown-item" type="button" (click)="signOut()">Log out</a>
         </div>
       </li>
