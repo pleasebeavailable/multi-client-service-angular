@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const user = new User(this.user.username, this.user.password, this.user.email, this.user.role);
+      const user = new User(this.user.id, this.user.username, this.user.password, this.user.email, this.user.role);
       this.authService.register(user).pipe().subscribe(() => {
         // TODO alert
         this.router.navigate(['/login']);
