@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Job} from '../../../shared/models/Job';
-import {JobService} from '../../services/job.service';
+import {JobService} from '../../../shared/services/job.service';
 
 @Component({
   selector: 'app-jobs',
@@ -9,7 +9,7 @@ import {JobService} from '../../services/job.service';
 })
 export class JobsComponent implements OnInit {
 
-  private jobs: Job[];
+  private jobs: Job[] = [];
 
   constructor(private jobService: JobService) {
   }

@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Job} from '../../shared/models/Job';
-import {AppConstants} from '../../shared/AppConstants';
-import {TokenStorage} from '../../shared/services/token.storage';
-import {User} from '../../shared/models/User';
+import {Job} from '../models/Job';
+import {AppConstants} from '../AppConstants';
+import {TokenStorage} from './token.storage';
+import {User} from '../models/User';
+import {log} from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class JobService {
   }
 
   getAllJobs(): Observable<Job[]> {
+    //console.log(this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions).subscribe(jobs => console.log(jobs)))
     return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions);
   }
 

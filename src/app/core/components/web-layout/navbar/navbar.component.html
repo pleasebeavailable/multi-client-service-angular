@@ -19,7 +19,7 @@
             <a class="dropdown-item" href="#">Customer 1</a>
             <a class="dropdown-item" href="#">Customer 2</a>
           </ng-template>
-          <ng-container *ngIf="this.user.roles[0] == 'ROLE_MERCHANT'; else customer">
+          <ng-container *ngIf="this.user.roles[0] === 'ROLE_MERCHANT'; else customer">
             <a class="dropdown-item" routerLink="">Merchant 1</a>
             <a class="dropdown-item" href="#">Merchant 2</a>
           </ng-container>
