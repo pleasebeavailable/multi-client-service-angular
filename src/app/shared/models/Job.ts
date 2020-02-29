@@ -1,8 +1,9 @@
 import {Purchase} from './Purchase';
 
-export interface Job {
-  id: number;
-  name: string;
-  userId: number;
+export class Job {
+  id?: number;
   purchases?: Purchase[];
+
+  constructor(public name: string, public userId: number) {
+  }
 }

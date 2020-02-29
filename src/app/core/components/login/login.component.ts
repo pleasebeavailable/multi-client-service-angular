@@ -29,10 +29,7 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     } else {
-      this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required]
-      });
+      this.initForm();
     }
     // TODO
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
@@ -65,5 +62,12 @@ export class LoginComponent implements OnInit {
           this.error = 'Login not successful';
         }
       );
+  }
+
+  private initForm() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 }

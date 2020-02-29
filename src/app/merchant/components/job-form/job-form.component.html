@@ -1,1 +1,16 @@
-<p>job-form works!</p>
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="mt-2 ml-2">
+  <div class="form-group">
+    <label for="name">Job name:</label>
+    <input type="text" formControlName="name" id="name" class="form-control" style="width: 35%"
+           [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+      <div *ngIf="f.name.errors.required">Job name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary mt-3 mr-3">
+      Add Job
+    </button>
+    <button routerLink="/" class="btn btn-danger mt-3">Cancel</button>
+  </div>
+</form>

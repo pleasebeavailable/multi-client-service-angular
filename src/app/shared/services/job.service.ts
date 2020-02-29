@@ -5,7 +5,6 @@ import {Job} from '../models/Job';
 import {AppConstants} from '../AppConstants';
 import {TokenStorage} from './token.storage';
 import {User} from '../models/User';
-import {log} from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,6 @@ export class JobService {
   }
 
   getAllJobs(): Observable<Job[]> {
-    //console.log(this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions).subscribe(jobs => console.log(jobs)))
     return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions);
   }
 
@@ -29,6 +27,6 @@ export class JobService {
   }
 
   createJob(job: Job): Observable<{}> {
-    return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', this.httpOptions);
+    return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', job, this.httpOptions);
   }
 }
