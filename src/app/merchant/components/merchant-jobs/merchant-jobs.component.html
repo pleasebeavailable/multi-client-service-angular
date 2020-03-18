@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col" *ngIf="jobs?.length !== 0; else noJobs">
+      <app-job-list [jobs]="jobs"></app-job-list>
+    </div>
+  </div>
+  <ng-template #noJobs>
+    <h5>There are currently no offered jobs!</h5>
+    <button class="btn btn-primary" routerLink="/merchant/job-form">Add Job</button>
+  </ng-template>
+</div>

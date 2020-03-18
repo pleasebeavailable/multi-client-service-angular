@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {User} from "../models/User";
 
 
 const TOKEN_KEY = 'AuthToken';
@@ -30,6 +31,9 @@ export class TokenStorage {
   }
 
   public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY));
+    const tokenUser = JSON.parse(sessionStorage.getItem(USER_KEY));
+    const user = tokenUser;
+    user.role = tokenUser.roles[0];
+    return user;
   }
 }

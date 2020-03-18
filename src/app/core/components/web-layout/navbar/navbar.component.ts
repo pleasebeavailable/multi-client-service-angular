@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
     if (this.tokenStorage.getUser()) {
       const user = this.tokenStorage.getUser();
       this.user = user;
-      this.user.role = user.roles[0];
     } else {
       this.user = null;
     }

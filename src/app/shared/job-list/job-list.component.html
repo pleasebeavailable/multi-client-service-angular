@@ -1,0 +1,11 @@
+<div class="col" *ngIf="jobs.length !== 0">
+  <div class="row">
+    <ng-container *ngFor="let job of jobs; let i=index">
+      <div class="col">
+        <app-job-details [job]="job"></app-job-details>
+      </div>
+      <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+    </ng-container>
+  </div>
+  <button class="btn btn-primary" routerLink="/merchant/job-form">Add Job</button>
+</div>
