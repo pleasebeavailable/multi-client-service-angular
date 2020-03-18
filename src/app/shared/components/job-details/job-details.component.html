@@ -1,13 +1,11 @@
 <div class="card" style="width: 18rem;">
   <!--  <img class="card-img-top" src="..." alt="Card image cap">-->
   <div class="card-body">
-    <h5 class="card-title">{{job.name}}</h5>
+    <h5 class="card-title">{{job.id}}</h5>
     <p class="card-text">Job description</p>
     <div *ngIf="role">
       <ng-container *ngIf="role === 'ROLE_MERCHANT'; else customer">
-        <a routerLink="/merchant/deleteJob/{{job.id}}">
-          <button class="btn btn-danger">Delete</button>
-        </a>
+          <button class="btn btn-danger" (click)="deleteJob(job.id)">Delete</button>
       </ng-container>
       <ng-template #customer>
         <a routerLink="/customer/purchase/{{job.id}}">

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col" *ngIf="jobs?.length !== 0; else noJobs">
+      <app-job-list [jobs]="jobs" [role]="currentUser.role"></app-job-list>
+    </div>
+  </div>
+  <ng-template #noJobs>
+    <h5>There are currently no offered jobs!</h5>
+  </ng-template>
+</div>
