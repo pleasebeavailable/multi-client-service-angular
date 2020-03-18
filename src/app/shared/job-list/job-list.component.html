@@ -2,7 +2,7 @@
   <div class="row">
     <ng-container *ngFor="let job of jobs; let i=index">
       <div class="col">
-        <app-job-details [job]="job"></app-job-details>
+        <app-job-details [job]="job" [role]="role"></app-job-details>
       </div>
       <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
     </ng-container>

@@ -1,6 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {JobsComponent} from '../shared/components/jobs/jobs.component';
 import {AuthGuard} from '../shared/services/_guard/auth-guard.service';
 import {JobFormComponent} from './components/job-form/job-form.component';
 import {SharedModule} from '../shared/shared.module';
@@ -20,7 +19,7 @@ const MERCHANT_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [JobFormComponent, JobsComponent, MerchantJobsComponent],
+  declarations: [JobFormComponent, MerchantJobsComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(MERCHANT_ROUTES),

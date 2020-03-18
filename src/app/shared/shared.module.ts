@@ -6,6 +6,7 @@ import {SelectModule} from 'ng-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { JobListComponent } from './job-list/job-list.component';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { JobListComponent } from './job-list/job-list.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule,
     SelectModule,
     FormsModule,
     NgbModule,

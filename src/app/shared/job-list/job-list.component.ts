@@ -9,8 +9,11 @@ import {Job} from "../models/Job";
 export class JobListComponent implements OnInit {
 
   @Input('jobs') jobs: Job[];
+  @Input('role') role?: string;
 
-  constructor() { }
+  constructor() {
+    console.log(this.role)
+  }
 
   ngOnInit(): void {
   }

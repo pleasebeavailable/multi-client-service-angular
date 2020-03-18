@@ -9,6 +9,7 @@ import {Job} from '../../models/Job';
 export class JobDetailsComponent implements OnInit {
 
   @Input('job') job: Job;
+  @Input('role') role?: string;
 
   constructor() { }
 
