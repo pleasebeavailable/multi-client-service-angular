@@ -9,6 +9,7 @@ import {CoreModule} from './core/core.module';
 import {MerchantModule} from './merchant/merchant.module';
 import {SharedModule} from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
+import {CustomerModule} from "./customer/customer.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    MerchantModule
+    MerchantModule,
+    CustomerModule
   ],
   providers: [TokenStorage],
   bootstrap: [AppComponent]
