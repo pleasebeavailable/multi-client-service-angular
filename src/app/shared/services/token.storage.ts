@@ -1,7 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {User} from "../models/User";
-
 
 const TOKEN_KEY = 'AuthToken';
 const USER_KEY = 'AuthUser';

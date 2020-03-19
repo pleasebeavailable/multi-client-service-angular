@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {AppConstants} from '../AppConstants';
 import {User} from '../models/User';
 import {LoginData} from '../models/LoginData';
@@ -10,7 +10,7 @@ import {LoginData} from '../models/LoginData';
   providedIn: 'root'
 })
 export class AuthService {
-
+  private user$: Observable<User>
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
@@ -21,4 +21,6 @@ export class AuthService {
   login(loginData: LoginData): Observable<User> {
     return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/authenticate', loginData, AppConstants.apiHttpOptions);
   }
+
+
 }
