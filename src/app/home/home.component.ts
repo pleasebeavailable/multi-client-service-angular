@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Job} from '../shared/models/Job';
 import {JobService} from '../shared/services/job.service';
-import {TokenStorage} from "../shared/services/token.storage";
-import {User} from "../shared/models/User";
-import {AppMethods} from "../shared/AppMethods";
+import {TokenStorage} from '../shared/services/token.storage';
+import {User} from '../shared/models/User';
 
 @Component({
   selector: 'app-home',

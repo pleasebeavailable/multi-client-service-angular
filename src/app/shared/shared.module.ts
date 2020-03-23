@@ -6,11 +6,11 @@ import {SelectModule} from 'ng-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { JobListComponent } from './components/job-list/job-list.component';
-import {RouterModule} from "@angular/router";
-
+import {RouterModule} from '@angular/router';
+import { JobFilterComponent } from './components/job-list/job-filter/job-filter.component';
 
 @NgModule({
-  declarations: [JobDetailsComponent, JobListComponent],
+  declarations: [JobDetailsComponent, JobListComponent, JobFilterComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,6 +31,7 @@ import {RouterModule} from "@angular/router";
     NgbModule,
     JobDetailsComponent,
     JobListComponent,
+    JobFilterComponent,
   ]
 })
 export class SharedModule {

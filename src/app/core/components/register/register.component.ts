@@ -19,7 +19,9 @@ export class RegisterComponent implements OnInit {
   roles: Array<SelectOption>;
   submitted: false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private location: Location) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+              private router: Router,
+              private location: Location) {
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           AppMethods.matchValues('password')
         ]],
-      role: ''
+      role: ['', [Validators.required]]
     });
   }
 
@@ -60,11 +62,11 @@ export class RegisterComponent implements OnInit {
   }
 
   refreshRoleValue(value: any) {
-    this.registerForm.controls.role.patchValue(value.value);
+    this.f.role.patchValue(value.value);
   }
 
   onRoleClear() {
-    this.registerForm.controls.role.patchValue('');
+    this.f.role.patchValue('');
   }
 
   goBack() {

@@ -1,11 +1,15 @@
 <div class="card" style="width: 18rem;">
   <!--  <img class="card-img-top" src="..." alt="Card image cap">-->
   <div class="card-body">
-    <h5 class="card-title">{{job.id}}</h5>
-    <p class="card-text">Job description</p>
+    <h5 class="card-title">{{job.name}}</h5>
+    <p class="card-text">{{job.category.name}}</p>
+    <p class="card-footer">Job description</p>
     <div *ngIf="role">
       <ng-container *ngIf="role === 'ROLE_MERCHANT'; else customer">
-          <button class="btn btn-danger" (click)="deleteJob(job.id)">Delete</button>
+        <div class="row text-center">
+          <button class="btn btn-primary col-6 btn-style" [routerLink]="['/merchant/job-form/', job.id]">Edit</button>
+          <button class="btn btn-danger col btn-style" (click)="deleteJob(job.id)">Delete</button>
+        </div>
       </ng-container>
       <ng-template #customer>
         <a routerLink="/customer/purchase/{{job.id}}">

@@ -14,4 +14,8 @@ export class AppMethods {
     };
   }
 
+  public static refreshPage() {
+    window.location.reload();
+  }
+
 }

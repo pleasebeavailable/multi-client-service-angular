@@ -31,6 +31,10 @@ export class JobService {
     return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', job, this.httpOptions);
   }
 
+  editJob(id: number, job: Job): Observable<Job> {
+    return this.httpClient.put<Job>(AppConstants.BACKEND_URL + 'merchant/editJob/' + id, job, this.httpOptions);
+  }
+
   deleteJob(id: number): Observable<{}> {
     return this.httpClient.delete(AppConstants.BACKEND_URL + 'merchant/deleteJob/' + id, this.httpOptions)
       .pipe(
@@ -39,5 +43,9 @@ export class JobService {
           return throwError('Job is not deleted!');
         })
       );
+  }
+
+  getJob(id: number): Observable<Job> {
+    return this.httpClient.get<Job>(AppConstants.BACKEND_URL + 'merchant/getJob/' + id, this.httpOptions);
   }
 }

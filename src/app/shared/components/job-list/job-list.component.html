@@ -1,11 +1,22 @@
-<div class="col" *ngIf="jobs.length !== 0">
-  <div class="row">
-    <ng-container *ngFor="let job of jobs; let i=index">
-      <div class="col">
-        <app-job-details [job]="job" [role]="role"></app-job-details>
-      </div>
-      <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
-    </ng-container>
+<div class="row">
+  <div class="col-3">
+    <app-job-filter [category]="categoryId"></app-job-filter>
   </div>
-  <button class="btn btn-primary" routerLink="/merchant/job-form">Add Job</button>
+  <div class="col" *ngIf="jobs.length !== 0;">
+    <div class="row" *ngIf="filteredJobs.length !== 0; else noJobs">
+      <ng-container *ngFor="let job of filteredJobs; let i=index">
+        <div class="col">
+          <app-job-details class="details" [job]="job" [role]="role"></app-job-details>
+        </div>
+        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+      </ng-container>
+    </div>
+    <ng-template #noJobs>
+      <div class="mt-4">
+        <h4 class="w-100">There are currently no available jobs in this category !</h4>
+        <h5>Offer first job !</h5>
+      </div>
+    </ng-template>
+    <button class="btn btn-primary" routerLink="/merchant/job-form">Add Job</button>
+  </div>
 </div>

@@ -1,11 +1,21 @@
-<form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="mt-2 ml-2">
+<!-- *ngIf kako ne bi dolazio form group instance error -->
+<form *ngIf="categories$.length!==0" [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="mt-2 ml-2">
   <div class="form-group">
     <label for="name">Job name:</label>
-    <input type="text" formControlName="name" id="name" class="form-control" style="width: 35%"
+    <input type="text" formControlName="name" id="name" class="form-control ml-3" style="width: 32%"
            [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
       <div *ngIf="f.name.errors.required">Job name is required</div>
     </div>
+  </div>
+  <div class="form-group">
+    <label for="category" class="w-100">Category</label>
+    <ng-select type="radio" id="category" formControlName="category" class="col-lg-4"
+               [options]="categorySelect"
+               [noFilter]="'Infinity'"
+               [allowClear]="true"
+               (selected)="refreshCategoryValue(value)"
+               (deselected)="onCategoryClear()"></ng-select>
   </div>
   <div class="form-group">
     <button class="btn btn-primary mt-3 mr-3">

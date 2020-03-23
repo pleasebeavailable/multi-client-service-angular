@@ -1,28 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col-3">
+  <div *ngIf="jobs?.length !== 0; else noJobs">
+    <app-job-list [jobs]="jobs"></app-job-list>
+  </div>
+  <ng-template #noJobs>
+    <div class="noJobs">
+      <h3>There are no jobs currently available</h3>
     </div>
-    <div class="col" *ngIf="jobs?.length !== 0; else noJobs">
-      <app-job-list [jobs]="jobs"></app-job-list>
+    <div *ngIf="currentUser == null; else user">
+      <h4 class="alert-info">Are you a merchant? Why don't you offer us your services?</h4>
+      <a routerLink="/register">
+        <button class="btn btn-danger">Register</button>
+      </a>
     </div>
-    <ng-template #noJobs>
-      <div class="noJobs">
-        <h3>There are no jobs currently available</h3>
-      </div>
-      <div *ngIf="currentUser == null; else user">
-        <h4 class="alert-info">Are you a merchant? Why don't you offer us your services?</h4>
-        <a routerLink="/register">
-          <button class="btn btn-danger">Register</button>
+    <ng-template #user>
+      <div *ngIf="currentUser.role === 'ROLE_MERCHANT'">
+        <h4>Offer your first job!</h4>
+        <a routerLink="/merchant/job-form">
+          <button class="btn btn-primary">Add Job</button>
         </a>
       </div>
-      <ng-template #user>
-        <div *ngIf="currentUser.role == 'ROLE_MERCHANT'">
-          <h4>Offer your first job!</h4>
-          <a routerLink="/merchant/job-form">
-            <button class="btn btn-primary">Add Job</button>
-          </a>
-        </div>
-      </ng-template>
     </ng-template>
-  </div>
+  </ng-template>
 </div>
