@@ -4,7 +4,6 @@ import {TokenStorage} from '../../../shared/services/token.storage';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginData} from '../../../shared/models/LoginData';
-import {NavbarService} from "../web-layout/navbar/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -23,8 +22,7 @@ export class LoginComponent implements OnInit {
     public tokenStorage: TokenStorage,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
-    private navbarService: NavbarService) {
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -55,7 +53,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(new LoginData(this.value.username, this.value.password))
       .subscribe(
         user => {
-          this.navbarService.setNavState(user);
           this.tokenStorage.saveUser(user);
           this.tokenStorage.saveToken(user.jwttoken);
           this.isLoggedIn = true;
