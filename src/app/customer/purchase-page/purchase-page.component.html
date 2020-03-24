@@ -1,15 +1,38 @@
 <div *ngIf="job != null" class="container">
   <div class="row">
     <div class="col-8 mt-5">
-      <h3 class="w-100">{{job.name}}</h3>
-      <div>About author</div>
+      <h1 class="w-100">{{job.name}}</h1>
+      <div>
+        <h3>About author</h3>
+        <p>Author...</p>
+      </div>
+      <div>
+        <h3>Job Description</h3>
+        <p>I will...</p>
+      </div>
+      <button class="btn btn-success" routerLink="purchase-form/{{job.id}}">Continue</button>
     </div>
-    <div class="col-4">
-      <mat-tab-group>
-        <mat-tab label="First">Content 1</mat-tab>
-        <mat-tab label="Second">Content 2</mat-tab>
-        <mat-tab label="Third">Content 3</mat-tab>
-      </mat-tab-group>
+    <div class="col-4 side-tab">
+      <ngb-tabset>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Tab 1</ng-template>
+          <ng-template ngbTabContent>
+            <p>Tab 1 Content</p>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Tab 2</ng-template>
+          <ng-template ngbTabContent>
+            <p>Tab 2 Content</p>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Tab 3</ng-template>
+          <ng-template ngbTabContent>
+            <p>Tab 3 Content</p>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
     </div>
   </div>
 </div>

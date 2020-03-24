@@ -17,6 +17,7 @@
         <h5>Offer first job !</h5>
       </div>
     </ng-template>
-    <button class="btn btn-primary" routerLink="/merchant/job-form">Add Job</button>
+    <button *ngIf="role === 'ROLE_MERCHANT'" class="btn btn-primary" routerLink="/merchant/job-form">Add Job
+    </button>
   </div>
 </div>

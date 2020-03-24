@@ -1,0 +1,64 @@
+<h4 class="w-100 ml-3 mt mt-3">Shipping Form</h4>
+<form class="col-4" *ngIf="purchaseForm" [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && p.name.errors }" required>
+    <div *ngIf="p.name.touched && p.name.errors" class="alert alert-danger">
+      <div *ngIf="p.name.errors.required">Name is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="email" formControlName="email" id="email" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && p.email.errors }" required>
+    <div *ngIf="p.email.touched && p.email.errors" class="alert alert-danger">
+      <div *ngIf="p.email.errors.required">E-mail is required</div>
+      <div *ngIf="p.email.errors.email">E-mail format not right</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tip">Tip</label>
+    <input type="number" formControlName="tip" id="tip" class="form-control">
+  </div>
+
+  <h4 class="w-100">Address:</h4>
+  <div class="col-12" formGroupName="address">
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input type="text" formControlName="street" id="street" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && a.get('street').errors }" required>
+      <div *ngIf="a.get('street').touched && a.get('street').errors" class="alert alert-danger">
+        <div *ngIf="a.get('street').errors.required">Street is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" formControlName="city" id="city" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && a.get('city').errors }" required>
+      <div *ngIf="a.get('city').touched && a.get('city').errors" class="alert alert-danger">
+        <div *ngIf="a.get('city').errors.required">City is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" formControlName="state" id="state" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && a.get('state').errors }" required>
+      <div *ngIf="a.get('state').touched && a.get('state').errors" class="alert alert-danger">
+        <div *ngIf="a.get('state').errors.required">State is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="zip">Zip</label>
+      <input type="text" formControlName="zip" id="zip" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && a.get('zip').errors }" required>
+      <div *ngIf="a.get('zip').touched && a.get('zip').errors" class="alert alert-danger">
+        <div *ngIf="a.get('zip').errors.required">Zip is required</div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

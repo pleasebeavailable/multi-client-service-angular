@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   roles: Array<SelectOption>;
-  submitted: false;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
               private router: Router,
@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.registerForm.valid) {
       const user = new User(this.user.id, this.user.username, this.user.password, this.user.email, this.user.role);
       this.authService.register(user).pipe().subscribe(() => {
