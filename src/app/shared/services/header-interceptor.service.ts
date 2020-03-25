@@ -15,6 +15,8 @@ export class HeaderInterceptorService implements HttpInterceptor {
     if (this.tokenStorage.getToken()) {
       return next.handle(req.clone({
         setHeaders: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
           Authorization: sessionStorage.getItem('AuthToken')
         }
       }));

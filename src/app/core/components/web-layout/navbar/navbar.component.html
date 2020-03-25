@@ -17,7 +17,7 @@
         <div ngbDropdownMenu class="dropdown-menu">
           <ng-template #customer>
             <a class="dropdown-item" href="/customer/available-jobs">Available Jobs</a>
-            <a class="dropdown-item" href="#">Customer 2</a>
+            <a class="dropdown-item" href="/customer/all-purchases">Made Purchases</a>
           </ng-template>
           <ng-container *ngIf="this.user.role === 'ROLE_MERCHANT'; else customer">
             <a class="dropdown-item" routerLink="/merchant/merchant-jobs">Merchant Home</a>

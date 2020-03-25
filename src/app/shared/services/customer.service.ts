@@ -15,8 +15,8 @@ export class CustomerService {
   constructor(private httpClient: HttpClient, private tokenStorage: TokenStorage) {
   }
 
-  getAllUserPurchases(): Observable<Purchase[]> {
-    return this.httpClient.get<Purchase[]>(AppConstants.BACKEND_URL + 'customer/purchase/' + this.tokenStorage.getUser().id);
+  getAllUserPurchases(userId: number): Observable<Purchase[]> {
+    return this.httpClient.get<Purchase[]>(AppConstants.BACKEND_URL + 'customer/allUserPurchases/' + userId);
   }
 
   purchaseJob(purchase: Purchase): Observable<{}> {

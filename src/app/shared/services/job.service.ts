@@ -27,11 +27,11 @@ export class JobService {
   }
 
   editJob(id: number, job: Job): Observable<Job> {
-    return this.httpClient.put<Job>(AppConstants.BACKEND_URL + 'merchant/editJob/' + id, job, AppMethods.getOptions(this.tokenStorage.getToken()));
+    return this.httpClient.put<Job>(AppConstants.BACKEND_URL + 'merchant/editJob/' + id, job);
   }
 
   deleteJob(id: number): Observable<{}> {
-    return this.httpClient.delete(AppConstants.BACKEND_URL + 'merchant/deleteJob/' + id, AppMethods.getOptions(this.tokenStorage.getToken()))
+    return this.httpClient.delete(AppConstants.BACKEND_URL + 'merchant/deleteJob/' + id)
       .pipe(
         tap(_ => console.log('Job is deleted!')),
         catchError(_ => {
@@ -41,6 +41,6 @@ export class JobService {
   }
 
   getJob(id: number): Observable<Job> {
-    return this.httpClient.get<Job>(AppConstants.BACKEND_URL + 'merchant/getJob/' + id, AppMethods.getOptions());
+    return this.httpClient.get<Job>(AppConstants.BACKEND_URL + 'merchant/getJob/' + id);
   }
 }

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <app-purchase-filter [category]="categoryId"></app-purchase-filter>
+    </div>
+    <div class="col">
+      <table *ngIf="userPurchases.length != 0" class="table table-striped mt-4">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Job Description</th>
+          <th scope="col">Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let purchase of filteredPurchases; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{purchase.jobDto.name}}
+          </td>
+          <td>
+            {{purchase.jobDto.id}}
+          </td>
+          <td>
+            {{purchase.jobDto.category.name}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
