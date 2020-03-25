@@ -1,6 +1,11 @@
 import {AbstractControl, ValidationErrors} from '@angular/forms';
+import {TokenStorage} from "./services/token.storage";
+import {HttpHeaders} from "@angular/common/http";
 
 export class AppMethods {
+
+  constructor(private tokenStorage: TokenStorage) {
+  }
 
   public static matchValues(
     matchTo: string // name of the control to match to
@@ -17,5 +22,6 @@ export class AppMethods {
   public static refreshPage() {
     window.location.reload();
   }
+
 
 }

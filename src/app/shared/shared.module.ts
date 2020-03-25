@@ -32,7 +32,7 @@ import { JobFilterComponent } from './components/job-list/job-filter/job-filter.
     JobDetailsComponent,
     JobListComponent,
     JobFilterComponent,
-  ]
+  ],
 })
 export class SharedModule {
 }

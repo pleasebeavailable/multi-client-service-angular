@@ -15,10 +15,10 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/signup', user, AppConstants.apiHttpOptions);
+    return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/signup', user);
   }
 
   login(loginData: LoginData): Observable<User> {
-    return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/authenticate', loginData, AppConstants.apiHttpOptions);
+    return this.httpClient.post<User>(AppConstants.BACKEND_URL + 'api/authenticate', loginData);
   }
 }

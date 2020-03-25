@@ -4,39 +4,34 @@ import {Observable, throwError} from 'rxjs';
 import {Job} from '../models/Job';
 import {AppConstants} from '../AppConstants';
 import {TokenStorage} from './token.storage';
-import {User} from '../models/User';
 import {catchError, tap} from 'rxjs/operators';
+import {AppMethods} from '../AppMethods';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
-  user: User;
-  httpOptions = AppConstants.apiHttpOptions;
 
-  constructor(private httpClient: HttpClient, private tokenStorage: TokenStorage) {
-    this.httpOptions.headers = AppConstants.apiHttpOptions.headers.append('Authorization', this.tokenStorage.getToken());
-    this.user = tokenStorage.getUser();
-  }
+  constructor(private httpClient: HttpClient, private tokenStorage: TokenStorage) {}
 
   getAllJobs(): Observable<Job[]> {
-    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs', AppConstants.apiHttpOptions);
+    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allJobs');
   }
 
   getMerchantJobs(merchantId: number): Observable<Job[]> {
-    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allMerchantJobs/' + merchantId, this.httpOptions);
+    return this.httpClient.get<Job[]>(AppConstants.BACKEND_URL + 'merchant/allMerchantJobs/' + merchantId);
   }
 
   createJob(job: Job): Observable<{}> {
-    return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', job, this.httpOptions);
+    return this.httpClient.post<Job>(AppConstants.BACKEND_URL + 'merchant/addNewJob', job);
   }
 
   editJob(id: number, job: Job): Observable<Job> {
-    return this.httpClient.put<Job>(AppConstants.BACKEND_URL + 'merchant/editJob/' + id, job, this.httpOptions);
+    return this.httpClient.put<Job>(AppConstants.BACKEND_URL + 'merchant/editJob/' + id, job, AppMethods.getOptions(this.tokenStorage.getToken()));
   }
 
   deleteJob(id: number): Observable<{}> {
-    return this.httpClient.delete(AppConstants.BACKEND_URL + 'merchant/deleteJob/' + id, this.httpOptions)
+    return this.httpClient.delete(AppConstants.BACKEND_URL + 'merchant/deleteJob/' + id, AppMethods.getOptions(this.tokenStorage.getToken()))
       .pipe(
         tap(_ => console.log('Job is deleted!')),
         catchError(_ => {
@@ -46,6 +41,6 @@ export class JobService {
   }
 
   getJob(id: number): Observable<Job> {
-    return this.httpClient.get<Job>(AppConstants.BACKEND_URL + 'merchant/getJob/' + id, this.httpOptions);
+    return this.httpClient.get<Job>(AppConstants.BACKEND_URL + 'merchant/getJob/' + id, AppMethods.getOptions());
   }
 }

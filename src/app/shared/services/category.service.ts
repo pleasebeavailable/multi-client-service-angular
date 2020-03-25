@@ -11,6 +11,6 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   async getCategories(): Promise<Category[]> {
-    return this.httpClient.get<Category[]>(AppConstants.BACKEND_URL + 'category/getCategories', AppConstants.apiHttpOptions).toPromise();
+    return this.httpClient.get<Category[]>(AppConstants.BACKEND_URL + 'category/getCategories').toPromise();
   }
 }

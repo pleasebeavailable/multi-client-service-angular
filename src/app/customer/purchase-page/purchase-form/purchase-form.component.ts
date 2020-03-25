@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Purchase} from '../../../shared/models/Purchase';
 import {Address} from '../../../shared/models/Address';
 import {TokenStorage} from '../../../shared/services/token.storage';
-import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
-import {PurchaseData} from "../../../shared/models/PurchaseData";
+import {ActivatedRoute, Router} from '@angular/router';
+import {PurchaseData} from '../../../shared/models/PurchaseData';
+import {CustomerService} from '../../../shared/services/customer.service';
 
 @Component({
   selector: 'app-purchase-form',
@@ -18,7 +19,9 @@ export class PurchaseFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private tokenStorage: TokenStorage,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private customerService: CustomerService,
+    private router: Router
   ) {
   }
 
@@ -47,7 +50,7 @@ export class PurchaseFormComponent implements OnInit {
       const address = new Address(this.address.street, this.address.city, this.address.state, this.address.zip);
       const purchaseData = new PurchaseData(this.tokenStorage.getUser().id, id, this.purchase.name, this.purchase.email, this.purchase.tip);
       const purchase = new Purchase(this.purchase.id, JSON.stringify(purchaseData), JSON.stringify(address));
-      console.log(purchase);
+      this.customerService.purchaseJob(purchase).subscribe(() => this.router.navigate(['customer/available-jobs']));
     }
   }
 

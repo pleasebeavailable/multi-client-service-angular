@@ -10,6 +10,8 @@ import {MerchantModule} from './merchant/merchant.module';
 import {SharedModule} from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import {CustomerModule} from './customer/customer.module';
+import {HeaderInterceptorService} from "./shared/services/header-interceptor.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import {CustomerModule} from './customer/customer.module';
     MerchantModule,
     CustomerModule
   ],
-  providers: [TokenStorage],
+  providers: [TokenStorage, {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
