@@ -2,26 +2,33 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-## Development server
+## Motivation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The Angular2 application created as GUI for SpringBoot MultiClientService application.
+This full-stack project was created for practice but because of lack of time, was never finished.
 
-## Code scaffolding
+## Tech used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Yarn
+- Angular2
 
-## Build
+## Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Install:
+  - Yarn
+  - Angular2
+  - Git (to clone a project)
+  
+## Project
 
-## Running unit tests
+This Angular2 application is example of retail web site.
+It enables both merchants and customers to register.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Merchant:
+  Create, Read, Update and Delete services 
+  
+Customer:
+  Browse throught different services from different merchants
+  Select service and go to checkout page
+  List of all bought services
+  
