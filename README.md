@@ -24,11 +24,11 @@ Install:
 This Angular2 application is example of retail web site.
 It enables both merchants and customers to register.
 
-Merchant:
-  Create, Read, Update and Delete services 
+## Merchant:
+  - Create, Read, Update and Delete services 
   
-Customer:
-  Browse throught different services from different merchants
-  Select service and go to checkout page
-  List of all bought services
+## Customer:
+  - Browse throught different services from different merchants
+  - Select service and go to checkout page
+  - List of all bought services
   
